@@ -1,13 +1,8 @@
 'use strict';
 (function() {
 
-function MainController($scope, $http) {
-  var self = this;
-  this.awesomeThings = [];
-
-  $http.get('/api/things').then(function(response) {
-    self.awesomeThings = response.data;
-  });
+  function MainController($scope) {
+    $state.go('intro');
 
 }
 
