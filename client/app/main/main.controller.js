@@ -2,7 +2,10 @@
 (function() {
 
   function MainController($scope) {
-    $state.go('intro');
+
+    $scope.next = function () {
+      $state.go('question');
+    };
 
 }
 
