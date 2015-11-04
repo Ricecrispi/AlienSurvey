@@ -1,9 +1,9 @@
 <div class="col-md-12">
   <br>
   <br>
-  <span ng-click="open()" class="right btn btn-danger">Quit</span>
+  <!--<span ng-click="open()" class="right btn btn-danger">Quit</span>-->
 
-  <div class="centered-div">
+  <div class="text-center">
     <div>
       <br>
       <br>
@@ -11,12 +11,16 @@
       <br>
       <!--<progressbar class="short centered-div" max="max" value="progressBar"><span style="color:black; white-space:nowrap;">{{progressBar}} / {{max}}</span>-->
       <!--</progressbar>-->
-      <h1>Please click on all properties that you can find on this alien. (We will be recording your mouse clicks).</h1>
+      <h3>Please click on all properties that you can find on this alien.</h3>
 
+      <span>Properties found: {{mouseClickLocations.length}}</span>
+      <br>
+      <br>
       <div class="alien-img" ng-click="recordClick($event)">
-        <img/>
+        <img ng-src="{{questions[curQuestion].alien.url}}"/>
       </div>
-
+      <br>
+      <br>
       <div>
         <span ng-click="next()" class="btn btn-default btn-lg">Next</span>
       </div>

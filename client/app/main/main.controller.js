@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 
-  function MainController($scope) {
+  function MainController($scope, $state) {
 
     $scope.next = function () {
       $state.go('question');
