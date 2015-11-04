@@ -7,7 +7,7 @@
 
 var _ = require('lodash');
 var config = require('../../config/environment');
-var Parse = require('parse').Parse;
+var Parse = require('parse/node').Parse;
 var fs = require('fs');
 Parse.initialize(config.PARSE_APPID, config.PARSE_JSKEY);
 

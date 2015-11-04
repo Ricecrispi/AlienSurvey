@@ -5,6 +5,6 @@ var controller = require('./question.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
+router.get('/', controller.getQuestions);
 
 module.exports = router;
