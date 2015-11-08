@@ -8,12 +8,13 @@
       <br>
       <br>
 
-      <h1><strong>Total found: {{mouseClickLocations.length}}</strong></h1>
+      <h1><strong>Total found: {{clickedProps.size}}</strong></h1>
       <br>
       <br>
       <br>
       <br>
-      <h3>Please click on <strong>{{questions[curQuestion].num}} </strong> properties that you can find on this alien.
+
+      <h3>Please click on <strong>4</strong> properties that you can find on this alien.
       </h3>
 
       <h3>
@@ -26,17 +27,17 @@
         <!--<div ng-repeat="property in questions[curQuestion].properties">-->
         <!--<img class="question" ng-click="recordClick(property)" ng-src="{{property.url}}"/>-->
         <!--</div>-->
-        <img src="assets/images/aliengreyedsome.png" alt="" usemap="#Map"/>
+        <img src="assets/images/aliengreyedsome.png" id="alienImgs" alt="" usemap="#Map"/>
         <map name="Map" id="Map">
-          <area ng-click="recordClick('hair')" alt="" title="" href="" shape="poly"
+          <area id="prop_1" ng-click="recordClick('hair', '#prop_1')" alt="" title="" shape="poly"
                 coords="335,951,337,971,377,971,388,963,360,949"/>
-          <area ng-click="recordClick('b')" alt="" title="" href="" shape="poly"
+          <area id="prop_2" ng-click="recordClick('b', '#prop_2')" alt="" title="" shape="poly"
                 coords="538,954,553,971,578,953,581,942,576,935"/>
-          <area ng-click="recordClick('a')" alt="" title="" href="" shape="poly"
+          <area id="prop_3" ng-click="recordClick('a', '#prop_3')" alt="" title="" shape="poly"
                 coords="311,457,313,506,324,580,389,583,438,452,378,416,357,410"/>
-          <area ng-click="recordClick('c')" alt="" title="" href="" shape="poly"
+          <area id="prop_4" ng-click="recordClick('c', '#prop_4')" alt="" title="" shape="poly"
                 coords="583,481,583,606,675,641,699,500,697,439"/>
-          <area ng-click="recordClick('d')" alt="" title="" href="" shape="poly"
+          <area id="prop_5" ng-click="recordClick('d', '#prop_5')" alt="" title="" shape="poly"
                 coords="684,179,765,163,788,196,696,197"/>
         </map>
 
@@ -54,3 +55,10 @@
   </div>
 </div>
 
+<!--<div style="float: left">-->
+<!--<img id="ImageMap1" src="http://geographyandhistory.wikispaces.com/file/view/solar_system.jpg/43347125/283x202/solar_system.jpg" usemap="#ImageMapmapAreas" />-->
+<!--<map id="ImageMapmapAreas" name="ImageMapmapAreas">-->
+<!--<area alt="" title="" href="#Earth" coords="228,151,53" shape="circle"/>-->
+<!--<area alt="" title="" href="#Sun" coords="68,54,44" shape="circle""/>-->
+<!--</map>-->
+<!--</div>-->

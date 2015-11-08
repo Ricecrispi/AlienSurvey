@@ -14,10 +14,11 @@ angular.module('alienSurveyApp')
     // current question #
     $scope.curQuestion = 0;
     // array of {x: , y:}
-    $scope.mouseClickLocations = [];
+    $scope.clickedProps = new Set();
 
-    $scope.recordClick = function (name) {
-      $scope.mouseClickLocations.push(name);
+    $scope.recordClick = function (name, id) {
+      $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
+      $scope.clickedProps.add(name);
     };
 
     $scope.saveAnswers = function () {
@@ -41,6 +42,32 @@ angular.module('alienSurveyApp')
       ;
     };
 
-    //$scope.getQuestions();
+    $('#alienImgs').maphilight({
+      fillColor: '008800'
+    });
+
+    //
+    //$.fn.maphilight.defaults = {
+    //  fill: true,
+    //  fillColor: '000000',
+    //  fillOpacity: 0.2,
+    //  stroke: true,
+    //  strokeColor: 'ff0000',
+    //  strokeOpacity: 1,
+    //  strokeWidth: 1,
+    //  fade: true,
+    //  alwaysOn: true,
+    //  neverOn: false,
+    //  groupBy: false,
+    //  wrapClass: true,
+    //  shadow: false,
+    //  shadowX: 0,
+    //  shadowY: 0,
+    //  shadowRadius: 6,
+    //  shadowColor: '000000',
+    //  shadowOpacity: 0.8,
+    //  shadowPosition: 'outside',
+    //  shadowFrom: false
+    //}
 
   });
