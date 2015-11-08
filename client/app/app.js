@@ -6,7 +6,8 @@ angular.module('alienSurveyApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'restangular'
+  'restangular',
+  'timer'
 ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

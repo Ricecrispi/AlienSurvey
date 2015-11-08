@@ -4,19 +4,23 @@
   <!--<span ng-click="open()" class="right btn btn-danger">Quit</span>-->
 
   <div>
-    <div>
+    <div class="text-center">
+      <br>
+      <br>
+
+      <h1><strong>Total found: {{mouseClickLocations.length}}</strong></h1>
       <br>
       <br>
       <br>
       <br>
-      <!--<progressbar class="short centered-div" max="max" value="progressBar"><span style="color:black; white-space:nowrap;">{{progressBar}} / {{max}}</span>-->
-      <!--</progressbar>-->
       <h3>Please click on <strong>{{questions[curQuestion].num}} </strong> properties that you can find on this alien.
       </h3>
 
-      <span>Properties found: {{mouseClickLocations.length}}</span>
-      <br>
-      <br>
+      <h3>
+        <timer finish-callback="next()" interval="1000" countdown="10">{{countdown}} seconds remaining.</timer>
+      </h3>
+
+
       <div class="alien-img">
         <!--<img class="alien" src="assets/images/aliengreyednone.png"/>-->
         <!--<div ng-repeat="property in questions[curQuestion].properties">-->
