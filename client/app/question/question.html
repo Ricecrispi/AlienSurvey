@@ -16,8 +16,9 @@
       <span>Properties found: {{mouseClickLocations.length}}</span>
       <br>
       <br>
-      <div class="alien-img" ng-click="recordClick($event)">
-        <img ng-src="{{questions[curQuestion].alien.url}}"/>
+
+      <div class="alien-img">
+        <img ng-click="recordClick($event)" ng-src="{{questions[curQuestion].alien.url}}"/>
       </div>
       <br>
       <br>
