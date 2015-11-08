@@ -3,15 +3,21 @@
 angular.module('alienSurveyApp')
   .controller('QuestionCtrl', function ($scope, Restangular, $state) {
     // array of alien images
-    $scope.questions = [];
+    $scope.questions = [
+      {
+        properties: [
+          {url: 'assets/images/13.png', name: 'boots'},
+          {url: 'assets/images/14.png', name: 'whatever'}
+        ]
+      }
+    ];
     // current question #
     $scope.curQuestion = 0;
     // array of {x: , y:}
     $scope.mouseClickLocations = [];
 
-    $scope.recordClick = function (event) {
-      $scope.mouseClickLocations.push([event.pageX, event.pageY]);
-      $scope.next();
+    $scope.recordClick = function (name) {
+      $scope.mouseClickLocations.push(name);
     };
 
     $scope.saveAnswers = function () {
@@ -35,6 +41,6 @@ angular.module('alienSurveyApp')
       ;
     };
 
-    $scope.getQuestions();
+    //$scope.getQuestions();
 
   });

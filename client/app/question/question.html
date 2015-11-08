@@ -3,7 +3,7 @@
   <br>
   <!--<span ng-click="open()" class="right btn btn-danger">Quit</span>-->
 
-  <div class="text-center">
+  <div>
     <div>
       <br>
       <br>
@@ -11,20 +11,38 @@
       <br>
       <!--<progressbar class="short centered-div" max="max" value="progressBar"><span style="color:black; white-space:nowrap;">{{progressBar}} / {{max}}</span>-->
       <!--</progressbar>-->
-      <h3>Please click on all properties that you can find on this alien.</h3>
+      <h3>Please click on <strong>{{questions[curQuestion].num}} </strong> properties that you can find on this alien.
+      </h3>
 
       <span>Properties found: {{mouseClickLocations.length}}</span>
       <br>
       <br>
-
       <div class="alien-img">
-        <img ng-click="recordClick($event)" ng-src="{{questions[curQuestion].alien.url}}"/>
+        <!--<img class="alien" src="assets/images/aliengreyednone.png"/>-->
+        <!--<div ng-repeat="property in questions[curQuestion].properties">-->
+        <!--<img class="question" ng-click="recordClick(property)" ng-src="{{property.url}}"/>-->
+        <!--</div>-->
+        <img src="assets/images/aliengreyedsome.png" alt="" usemap="#Map"/>
+        <map name="Map" id="Map">
+          <area ng-click="recordClick('hair')" alt="" title="" href="" shape="poly"
+                coords="335,951,337,971,377,971,388,963,360,949"/>
+          <area ng-click="recordClick('b')" alt="" title="" href="" shape="poly"
+                coords="538,954,553,971,578,953,581,942,576,935"/>
+          <area ng-click="recordClick('a')" alt="" title="" href="" shape="poly"
+                coords="311,457,313,506,324,580,389,583,438,452,378,416,357,410"/>
+          <area ng-click="recordClick('c')" alt="" title="" href="" shape="poly"
+                coords="583,481,583,606,675,641,699,500,697,439"/>
+          <area ng-click="recordClick('d')" alt="" title="" href="" shape="poly"
+                coords="684,179,765,163,788,196,696,197"/>
+        </map>
+
       </div>
       <br>
       <br>
-      <div>
-        <span ng-click="next()" class="btn btn-default btn-lg">Next</span>
-      </div>
+
+      <!--<div>-->
+      <!--<span ng-click="next()" class="btn btn-default btn-lg">Next</span>-->
+      <!--</div>-->
 
       <br>
       <br>

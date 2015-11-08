@@ -1,0 +1,17 @@
+.question {
+  position: absolute;
+  z-index: 1;
+  //left: 100px;
+  //top: 300px;
+}
+
+.alien {
+  position: absolute;
+  z-index: 0;
+  //left: 100px;
+  //top: 300px;
+}
+
+.alien-img {
+  display: inline-block;
+}
