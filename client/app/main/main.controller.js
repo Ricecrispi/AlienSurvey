@@ -1,13 +1,15 @@
 'use strict';
 (function() {
 
-  function MainController($scope, $state) {
+  function MainController($scope, $state, $cookieStore) {
 
     $scope.next = function () {
-      $state.go('question');
+      $cookieStore.put('clicked', []);
+      $state.go('question', {id: 0});
     };
 
-}
+
+  }
 
 angular.module('alienSurveyApp')
   .controller('MainController', MainController);

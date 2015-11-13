@@ -14,40 +14,62 @@
       <br>
       <br>
 
-      <h3>Please click on <strong>4</strong> properties that you can find on this alien.
+      <h3>Please click on <strong>{{question.numProps}}</strong> properties on this alien.
       </h3>
 
       <h3>
-        <timer finish-callback="next()" interval="1000" countdown="10">{{countdown}} seconds remaining.</timer>
+        <timer autostart="false" finish-callback="next()" interval="1000" countdown="5"><strong>{{countdown}}</strong>
+          seconds remaining.
+        </timer>
       </h3>
 
-
       <div class="alien-img">
-        <!--<img class="alien" src="assets/images/aliengreyednone.png"/>-->
-        <!--<div ng-repeat="property in questions[curQuestion].properties">-->
-        <!--<img class="question" ng-click="recordClick(property)" ng-src="{{property.url}}"/>-->
-        <!--</div>-->
-        <img src="assets/images/aliengreyedsome.png" id="alienImgs" alt="" usemap="#Map"/>
+        <img ng-src="{{question.alien.url}}" alt="" usemap="#Map" class="alienImgs"/>
         <map name="Map" id="Map">
-          <area class="prop_1" ng-click="recordClick('hair', '.prop_1')" alt="" title="" shape="poly"
-                coords="335,951,337,971,377,971,388,963,360,949"/>
-          <area class="prop_2" ng-click="recordClick('b', '.prop_2')" alt="" title="" shape="poly"
-                coords="538,954,553,971,578,953,581,942,576,935"/>
-          <area class="prop_2" ng-click="recordClick('a', '.prop_2')" alt="" title="" shape="poly"
-                coords="311,457,313,506,324,580,389,583,438,452,378,416,357,410"/>
-          <area class="prop_4" ng-click="recordClick('c', '.prop_4')" alt="" title="" shape="poly"
-                coords="583,481,583,606,675,641,699,500,697,439"/>
-          <area class="prop_5" ng-click="recordClick('d', '.prop_5')" alt="" title="" shape="poly"
-                coords="684,179,765,163,788,196,696,197"/>
+          <div bind-html-compile="question.mode">
+          </div>
         </map>
-
       </div>
-      <br>
-      <br>
 
       <!--<div>-->
       <!--<span ng-click="next()" class="btn btn-default btn-lg">Next</span>-->
       <!--</div>-->
+
+      <!--<div class="alien-img">-->
+      <!--<img ng-src="{{questions[0].alien.url}}" alt="" usemap="#Map" class="alienImgs"/>-->
+      <!--<map name="Map" id="Map">-->
+      <!--<div bind-html-compile="questions[0].mode"></div>-->
+      <!--</map>-->
+      <!--</div>-->
+
+      <!--<div ng-if="curQuestion==1" class="alien-img">-->
+      <!--<img ng-src="{{questions[1].alien.url}}" alt="" usemap="#Map2" class="alienImgs"/>-->
+      <!--<map name="Map2" id="Map2">-->
+      <!--<div bind-html-compile="questions[1].mode"></div>-->
+      <!--</map>-->
+      <!--</div>-->
+
+      <!--<div ng-if="curQuestion==2" class="alien-img">-->
+      <!--<img ng-src="{{questions[2].alien.url}}" alt="" usemap="#Map3" class="alienImgs"/>-->
+      <!--<map name="Map3" id="Map3">-->
+      <!--<div bind-html-compile="questions[2].mode"></div>-->
+      <!--</map>-->
+      <!--</div>-->
+
+      <!--<div ng-if="curQuestion==3" class="alien-img">-->
+      <!--<img ng-src="{{questions[3].alien.url}}" alt="" usemap="#Map4" class="alienImgs"/>-->
+      <!--<map name="Map4" id="Map4">-->
+      <!--<div bind-html-compile="questions[3].mode"></div>-->
+      <!--</map>-->
+      <!--</div>-->
+
+      <!--<div ng-if="curQuestion==4" class="alien-img">-->
+      <!--<img ng-src="{{questions[4].alien.url}}" alt="" usemap="#Map5" class="alienImgs"/>-->
+      <!--<map name="Map5" id="Map5">-->
+      <!--<div bind-html-compile="questions[4].mode"></div>-->
+      <!--</map>-->
+      <!--</div>-->
+
 
       <br>
       <br>

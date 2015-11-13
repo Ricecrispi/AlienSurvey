@@ -1,19 +1,11 @@
 'use strict';
 
 angular.module('alienSurveyApp')
-  .controller('QuestionCtrl', function ($scope, Restangular, $state) {
+  .controller('QuestionCtrl', function ($scope, Restangular, $state, $stateParams, $cookieStore) {
     // array of alien images
-    $scope.questions = [
-      {
-        properties: [
-          {url: 'assets/images/13.png', name: 'boots'},
-          {url: 'assets/images/14.png', name: 'whatever'}
-        ]
-      }
-    ];
+    $scope.questions = [];
     // current question #
     $scope.curQuestion = 0;
-    // array of {x: , y:}
     $scope.clickedProps = new Set();
 
     $scope.recordClick = function (name, id) {
@@ -21,28 +13,71 @@ angular.module('alienSurveyApp')
       $scope.clickedProps.add(name);
     };
 
-    $scope.saveAnswers = function () {
-      Restangular.all('api/participants/').post({answers: $scope.mouseClickLocations}).then(function (serverJson) {
+
+
+
+    $scope.next = function () {
+      if ($stateParams.id == '4') {
         $state.go('end');
-      });
+      } else {
+
+        var arr = $cookieStore.get('clicked');
+        arr.push(Array.from($scope.clickedProps));
+        $cookieStore.put('clicked', arr);
+        $state.go('question', {id: parseInt($stateParams.id) + 1});
+      }
+      ;
+
+
+      //if ($scope.curQuestion < $scope.questions.length - 1) {
+      //  $scope.curQuestion += 1;
+      //  $scope.$apply();
+      //  $scope.clickedPropsAll.push(Array.from($scope.clickedProps));
+      //  $scope.clickedProps = new Set();
+      //  $scope.$broadcast('timer-start');
+      //} else {
+      //  $scope.saveAnswers();
+      //}
+      //;
     };
 
     $scope.getQuestions = function (answer) {
       Restangular.all('api/questions/').getList().then(function (serverJson) {
-        $scope.questions = serverJson;
+        $scope.question = serverJson[parseInt($stateParams.id)];
+        $scope.$broadcast('timer-start');
       });
     };
 
-    $scope.next = function () {
-      if ($scope.curQuestion < $scope.questions.length - 1) {
-        $scope.curQuestion += 1;
-      } else {
-        $scope.saveAnswers();
-      }
-      ;
-    };
 
-    $('#alienImgs').maphilight({
+    //
+    //  $scope.recordClick = function (name, id) {
+    //    $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
+    //    $scope.clickedProps.add(name);
+    //    //
+    //    //if ($scope.clickedProps.size - ($scope.curQuestion*5) >= 5) {
+    //    //  $scope.next();
+    //    //}
+    //  };
+    //
+    //  $scope.saveAnswers = function () {
+    //    Restangular.all('api/participants/').post({answers: $scope.clickedPropsAll}).then(function (serverJson) {
+    //      $state.go('end');
+    //    });
+    //  };
+    //
+    //  $scope.getQuestions = function (answer) {
+    //    Restangular.all('api/questions/').getList().then(function (serverJson) {
+    //      $scope.questions = serverJson;
+    //      $scope.$broadcast('timer-start');
+    //    });
+    //  };
+    //
+
+
+    //
+    $('.alienImgs').maphilight({
       neverOn: true
     });
+    //
+    $scope.getQuestions();
   });
