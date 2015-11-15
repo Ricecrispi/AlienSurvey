@@ -7,4 +7,5 @@ var router = express.Router();
 
 router.get('/', controller.getQuestions);
 
+
 module.exports = router;

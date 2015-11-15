@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-xs-3">
+
+
+  </div>
+
+
+  <div class="col-xs-6">
+    In the survey, you will be asked to answer as many questions as possible within 100 seconds.
+    Here is a sample question.
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h3>Please click on <strong>{{question.numProps}}</strong> properties on this alien.
+    </h3>
+
+    <h3>
+      <timer autostart="false" finish-callback="next()" interval="1000" countdown="5"><strong>{{countdown}}</strong>
+        seconds remaining.
+      </timer>
+    </h3>
+
+    <div class="alien-img">
+      <img src="aliengreyedsome" alt="" usemap="#Map" class="alienImgs"/>
+      <map name="Map" id="Map">
+        <div bind-html-compile="question.mode">
+        </div>
+      </map>
+    </div>
+
+    <br>
+    <br>
+
+    <div ng-show="done">
+      <button class="btn btn-primary btn-lg" type="submit" value="submit">Click to begin the survey</button>
+    </div>
+
+
+  </div>
+
+  <div class="col-xs-3">
+
+  </div>
+
+
+  <br>
+  <br>
+
+</div>

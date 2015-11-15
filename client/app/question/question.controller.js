@@ -13,12 +13,9 @@ angular.module('alienSurveyApp')
       $scope.clickedProps.add(name);
     };
 
-
-
-
     $scope.next = function () {
       if ($stateParams.id == '4') {
-        $state.go('end');
+        $scope.saveAnswers();
       } else {
 
         var arr = $cookieStore.get('clicked');
@@ -72,7 +69,13 @@ angular.module('alienSurveyApp')
     //    });
     //  };
     //
+    $scope.saveAnswers = function () {
+      Restangular.all('api/participants/').post({answers: $cookieStore.get('clicked')}).then(function (serverJson) {
+        $state.go('end');
+      });
+    };
 
+    $scope.saveAnswers();
 
     //
     $('.alienImgs').maphilight({

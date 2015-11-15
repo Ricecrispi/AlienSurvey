@@ -12,13 +12,9 @@ var fs = require('fs');
 Parse.initialize(config.PARSE_APPID, config.PARSE_JSKEY);
 
 
-exports.addAnswer = function(req, res) {
-  var answers = req.body.answers;
-
+exports.addParticipant = function (req, res) {
   var Answer = Parse.Object.extend('Answer');
   var newAnswer = new Answer();
-
-  newAnswer.set('answers', answers);
 
   newAnswer.save().then(function (result) {
       res.status(200).end();
@@ -26,8 +22,43 @@ exports.addAnswer = function(req, res) {
     function (err) {
       console.log(err);
       res.status(500).end();
-    }
-  );
-
+    });
 };
+
+exports.addAnswer = function(req, res) {
+  var answers = req.body.answers;
+  var objectId = req.body.objectId;
+
+  var Answer = Parse.Object.extend('Answer');
+  var newAnswer = new Answer();
+  newAnswer.id = objectId;
+  newAnswer.set('answers', answers);
+  newAnswer.set('numAliens', answers.length);
+
+  newAnswer.save().then(function (result) {
+      res.status(200).end();
+    },
+    function (err) {
+      console.log(err);
+      res.status(500).end();
+    });
+};
+
+exports.getAnswers = function (req, res) {
+  var Answer = Parse.Object.extend('Answer');
+  var Answer = new Parse.Query(Answer);
+
+  query.descending('numAliens');
+  query.find({
+    success: function (results) {
+      res.json(results);
+    }
+    ,
+    error: function (error) {
+      console.log(error);
+      res.status(500).end();
+    }
+  });
+};
+
 
