@@ -16,14 +16,14 @@
 
     <div class="text-center">
       <div>
-        You are doing a study. It is on a volunteer basis. You may withdraw at any time.
+        You are doing a study. It is on a volunteer basis and you may withdraw at any time.
       </div>
       <br>
 
       <div>
         In the survey, you will be asked to identify properties on cartoon aliens.
         The ultimate goal of this research is to develop a game using these aliens
-        to match complex software systems.
+        to match complex software systems. Thanks for participating!
       </div>
 
       <br>
@@ -32,7 +32,7 @@
       <br>
 
       <form ng-submit="next()">
-        <input class="form-control" placeholder="Username" type="text"/>
+        <input ng-model="username" class="form-control" placeholder="Username" type="text"/>
         <br>
         <alert ng-show="taken" type="danger">This username is taken. Please enter another one.</alert>
         <br>

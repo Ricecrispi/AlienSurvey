@@ -14,15 +14,37 @@ Parse.initialize(config.PARSE_APPID, config.PARSE_JSKEY);
 
 exports.addParticipant = function (req, res) {
   var Answer = Parse.Object.extend('Answer');
-  var newAnswer = new Answer();
+  var username = req.body.username;
+  var query = new Parse.Query(Answer);
 
-  newAnswer.save().then(function (result) {
-      res.status(200).end();
-    },
-    function (err) {
-      console.log(err);
+  query.equalTo('username', username);
+  query.find({
+    success: function (results) {
+      if (results.length > 0) {
+        res.send('name taken').end();
+      } else {
+
+        var newAnswer = new Answer();
+        newAnswer.set('username', username);
+
+        newAnswer.save().then(function (result) {
+            res.json(result);
+          },
+          function (err) {
+            console.log(err);
+            res.status(500).end();
+          });
+
+      }
+      ;
+    }
+    ,
+    error: function (error) {
+      console.log(error);
       res.status(500).end();
-    });
+    }
+  });
+
 };
 
 exports.addAnswer = function(req, res) {
@@ -46,7 +68,7 @@ exports.addAnswer = function(req, res) {
 
 exports.getAnswers = function (req, res) {
   var Answer = Parse.Object.extend('Answer');
-  var Answer = new Parse.Query(Answer);
+  var query = new Parse.Query(Answer);
 
   query.descending('numAliens');
   query.find({

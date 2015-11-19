@@ -12,7 +12,7 @@ angular.module('alienSurveyApp')
     $scope.recordClick = function (name, id) {
       $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
       $scope.clickedProps += 1;
-      if ($scope.clickedProps == 5) {
+      if ($scope.clickedProps == 3) {
         $scope.done = true;
       }
       ;

@@ -46,36 +46,17 @@ angular.module('alienSurveyApp')
     };
 
 
-    //
-    //  $scope.recordClick = function (name, id) {
-    //    $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
-    //    $scope.clickedProps.add(name);
-    //    //
-    //    //if ($scope.clickedProps.size - ($scope.curQuestion*5) >= 5) {
-    //    //  $scope.next();
-    //    //}
-    //  };
-    //
-    //  $scope.saveAnswers = function () {
-    //    Restangular.all('api/participants/').post({answers: $scope.clickedPropsAll}).then(function (serverJson) {
-    //      $state.go('end');
-    //    });
-    //  };
-    //
-    //  $scope.getQuestions = function (answer) {
-    //    Restangular.all('api/questions/').getList().then(function (serverJson) {
-    //      $scope.questions = serverJson;
-    //      $scope.$broadcast('timer-start');
-    //    });
-    //  };
-    //
     $scope.saveAnswers = function () {
-      Restangular.all('api/participants/').post({answers: $cookieStore.get('clicked')}).then(function (serverJson) {
+      Restangular.all('api/participants/')
+        .post({
+          answers: $cookieStore.get('clicked'),
+          objectId: $cookieStore.get('objectId')
+        }).then(function (serverJson) {
         $state.go('end');
       });
     };
 
-    $scope.saveAnswers();
+    //$scope.saveAnswers();
 
     //
     $('.alienImgs').maphilight({
