@@ -1,46 +1,50 @@
 'use strict';
 
 angular.module('alienSurveyApp')
-  .controller('QuestionCtrl', function ($scope, Restangular, $state, $stateParams, $cookieStore) {
+  .controller('QuestionCtrl', function ($scope, Restangular, $state, $stateParams, $cookieStore, $interval) {
     // array of alien images
     $scope.questions = [];
     // current question #
     $scope.curQuestion = 0;
     $scope.clickedProps = new Set();
+    $scope.time = parseInt($cookieStore.get('time'));
 
     $scope.recordClick = function (name, id) {
-      $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
-      $scope.clickedProps.add(name);
+      if ($scope.question.numProps != $scope.clickedProps.size) {
+        $(id).data('maphilight', {'alwaysOn': true}).trigger('alwaysOn.maphilight');
+        $scope.clickedProps.add(name);
+      }
+      ;
+
+      if ($scope.question.numProps == $scope.clickedProps.size) {
+        $scope.next();
+      }
+      ;
+
     };
 
     $scope.next = function () {
-      if ($stateParams.id == '4') {
-        $scope.saveAnswers();
-      } else {
-
+      if ($stateParams.id == serverJson.length - 1) {
         var arr = $cookieStore.get('clicked');
         arr.push(Array.from($scope.clickedProps));
         $cookieStore.put('clicked', arr);
+        $cookieStore.put('time', $scope.time);
+        $state.go('end');
+      } else {
+        var arr = $cookieStore.get('clicked');
+        arr.push(Array.from($scope.clickedProps));
+        $cookieStore.put('clicked', arr);
+        $cookieStore.put('time', $scope.time);
         $state.go('question', {id: parseInt($stateParams.id) + 1});
       }
       ;
 
-
-      //if ($scope.curQuestion < $scope.questions.length - 1) {
-      //  $scope.curQuestion += 1;
-      //  $scope.$apply();
-      //  $scope.clickedPropsAll.push(Array.from($scope.clickedProps));
-      //  $scope.clickedProps = new Set();
-      //  $scope.$broadcast('timer-start');
-      //} else {
-      //  $scope.saveAnswers();
-      //}
-      //;
     };
 
     $scope.getQuestions = function (answer) {
       Restangular.all('api/questions/').getList().then(function (serverJson) {
         $scope.question = serverJson[parseInt($stateParams.id)];
+        $scope.questions = serverJson;
         $scope.$broadcast('timer-start');
       });
     };
@@ -55,6 +59,20 @@ angular.module('alienSurveyApp')
         $state.go('end');
       });
     };
+
+    var stop;
+    $scope.timer = function () {
+      if (angular.isDefined(stop)) return;
+
+      stop = $interval(function () {
+        if ($scope.time < 100) {
+          $scope.time = $scope.time + 1;
+        } else {
+          $state.go('end');
+        }
+      }, 1000);
+    };
+
 
     //$scope.saveAnswers();
 

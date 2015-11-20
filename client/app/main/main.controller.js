@@ -12,6 +12,7 @@
           $scope.taken = true;
         } else {
           $cookieStore.put('clicked', []);
+          $cookieStore.put('time', 0);
           $cookieStore.put('objectId', serverJson.objectId);
           $state.go('training');
         }

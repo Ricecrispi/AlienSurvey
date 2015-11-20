@@ -1,86 +1,24 @@
 <div class="col-md-12">
-  <br>
-  <br>
-  <!--<span ng-click="open()" class="right btn btn-danger">Quit</span>-->
-
   <div>
     <div class="text-center">
       <br>
-      <br>
 
-      <h1><strong>Total found: {{clickedProps.size}}</strong></h1>
+      <h3>{{100 - time}} seconds left.</h3>
       <br>
+      <h5>Please find <strong>{{question.numProps}}</strong> properties on this alien.
+      </h5>
       <br>
-      <br>
-      <br>
-
-      <h3>Please click on <strong>{{question.numProps}}</strong> properties on this alien.
-      </h3>
-
-      <h3>
-        <timer autostart="false" finish-callback="next()" interval="1000" countdown="5"><strong>{{countdown}}</strong>
-          seconds remaining.
-        </timer>
-      </h3>
+      <h5><strong>Total found: {{clickedProps.size}}</strong></h5>
 
       <div class="alien-img">
-        <img ng-src="{{question.alien.url}}" alt="" usemap="#Map" class="alienImgs"/>
+        <img ng-src="{{question.alien.url}}" alt="" usemap="#Map" class="alienImgs" imageonload="timer()"/>
         <map name="Map" id="Map">
           <div bind-html-compile="question.mode">
           </div>
         </map>
       </div>
-
-      <!--<div>-->
-      <!--<span ng-click="next()" class="btn btn-default btn-lg">Next</span>-->
-      <!--</div>-->
-
-      <!--<div class="alien-img">-->
-      <!--<img ng-src="{{questions[0].alien.url}}" alt="" usemap="#Map" class="alienImgs"/>-->
-      <!--<map name="Map" id="Map">-->
-      <!--<div bind-html-compile="questions[0].mode"></div>-->
-      <!--</map>-->
-      <!--</div>-->
-
-      <!--<div ng-if="curQuestion==1" class="alien-img">-->
-      <!--<img ng-src="{{questions[1].alien.url}}" alt="" usemap="#Map2" class="alienImgs"/>-->
-      <!--<map name="Map2" id="Map2">-->
-      <!--<div bind-html-compile="questions[1].mode"></div>-->
-      <!--</map>-->
-      <!--</div>-->
-
-      <!--<div ng-if="curQuestion==2" class="alien-img">-->
-      <!--<img ng-src="{{questions[2].alien.url}}" alt="" usemap="#Map3" class="alienImgs"/>-->
-      <!--<map name="Map3" id="Map3">-->
-      <!--<div bind-html-compile="questions[2].mode"></div>-->
-      <!--</map>-->
-      <!--</div>-->
-
-      <!--<div ng-if="curQuestion==3" class="alien-img">-->
-      <!--<img ng-src="{{questions[3].alien.url}}" alt="" usemap="#Map4" class="alienImgs"/>-->
-      <!--<map name="Map4" id="Map4">-->
-      <!--<div bind-html-compile="questions[3].mode"></div>-->
-      <!--</map>-->
-      <!--</div>-->
-
-      <!--<div ng-if="curQuestion==4" class="alien-img">-->
-      <!--<img ng-src="{{questions[4].alien.url}}" alt="" usemap="#Map5" class="alienImgs"/>-->
-      <!--<map name="Map5" id="Map5">-->
-      <!--<div bind-html-compile="questions[4].mode"></div>-->
-      <!--</map>-->
-      <!--</div>-->
-
-
       <br>
       <br>
     </div>
   </div>
 </div>
-
-<!--<div style="float: left">-->
-<!--<img id="ImageMap1" src="http://geographyandhistory.wikispaces.com/file/view/solar_system.jpg/43347125/283x202/solar_system.jpg" usemap="#ImageMapmapAreas" />-->
-<!--<map id="ImageMapmapAreas" name="ImageMapmapAreas">-->
-<!--<area alt="" title="" href="#Earth" coords="228,151,53" shape="circle"/>-->
-<!--<area alt="" title="" href="#Sun" coords="68,54,44" shape="circle""/>-->
-<!--</map>-->
-<!--</div>-->
