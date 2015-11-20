@@ -24,7 +24,7 @@ angular.module('alienSurveyApp')
     };
 
     $scope.next = function () {
-      if ($stateParams.id == serverJson.length - 1) {
+      if ($stateParams.id == $scope.questions.length - 1) {
         var arr = $cookieStore.get('clicked');
         arr.push(Array.from($scope.clickedProps));
         $cookieStore.put('clicked', arr);
