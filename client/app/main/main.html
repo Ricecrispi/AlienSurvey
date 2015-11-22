@@ -16,25 +16,26 @@
 
     <div class="text-center">
       <div>
-        You are doing a study. It is on a volunteer basis and you may withdraw at any time.
+        You are doing a study. It is on a volunteer basis and you may withdraw at any time. 
+        We will not collect any personal information.
       </div>
       <br>
 
       <div>
-        In the survey, you will be asked to identify properties on cartoon aliens.
+        In this survey, you will be asked to identify properties on a cartoon alien.
         The ultimate goal of this research is to develop a game using these aliens
         to match complex software systems. Thanks for participating!
       </div>
 
       <br>
 
-      <div>Please enter a username:</div>
+      <div>Please enter a nickname:</div>
       <br>
 
       <form ng-submit="next()">
         <input ng-model="username" class="form-control" placeholder="Username" type="text"/>
         <br>
-        <alert ng-show="taken" type="danger">This username is taken. Please enter another one.</alert>
+        <alert ng-show="taken" type="danger">This nickname is taken. Please enter another one.</alert>
         <br>
         <button class="btn btn-primary btn-lg" type="submit" value="submit">Next</button>
       </form>
