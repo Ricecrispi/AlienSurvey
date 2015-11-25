@@ -2,7 +2,7 @@
   <div>
     <div class="text-center">
       <br>
-
+      <br>
       <div ng-show="question.numProps == clickedProps.size">
         <div ng-click="next()" class="btn btn-primary btn-lg">
           Next
@@ -19,11 +19,10 @@
 
       <h3>{{100 - time}} seconds left.</h3>
       <br>
-      <h5>Please find <h1><strong>{{question.numProps}}</strong></h1> properties on this alien.
+      <h5>Find <h1><strong>{{question.numProps - clickedProps.size}} </strong></h1> properties on this alien.
       </h5>
       <br>
-      <h5><strong>Total found: {{clickedProps.size}}/{{question.numProps}}</strong></h5>
-
+      <br>
       <div class="alien-img" ng-show="question.numProps != clickedProps.size">
         <img ng-src="{{question.alien.url}}" alt="" usemap="#Map" class="alienImgs" imageonload="timer()"/>
         <map name="Map" id="Map">
