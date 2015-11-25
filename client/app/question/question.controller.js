@@ -67,7 +67,7 @@ angular.module('alienSurveyApp')
       stop = $interval(function () {
         if ($scope.question.numProps == $scope.clickedProps.size) {
           $interval.cancel(stop);
-        } else if ($scope.time < 100) {
+        } else if ($scope.time < 60) {
           $scope.time = $scope.time + 1;
         } else {
           $interval.cancel(stop);
