@@ -16,10 +16,10 @@ angular.module('alienSurveyApp')
       }
       ;
 
-      if ($scope.question.numProps == $scope.clickedProps.size) {
-        $scope.next();
-      }
-      ;
+      //if ($scope.question.numProps == $scope.clickedProps.size) {
+      //  $scope.next();
+      //}
+      //;
 
     };
 
@@ -65,9 +65,12 @@ angular.module('alienSurveyApp')
       if (angular.isDefined(stop)) return;
 
       stop = $interval(function () {
-        if ($scope.time < 100) {
+        if ($scope.question.numProps == $scope.clickedProps.size) {
+          $interval.cancel(stop);
+        } else if ($scope.time < 100) {
           $scope.time = $scope.time + 1;
         } else {
+          $interval.cancel(stop);
           $state.go('end');
         }
       }, 1000);

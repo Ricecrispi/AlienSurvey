@@ -1,16 +1,30 @@
-<div class="col-md-12">
+<div class="col-xs-12">
   <div>
     <div class="text-center">
       <br>
 
+      <div ng-show="question.numProps == clickedProps.size">
+        <div ng-click="next()" class="btn btn-primary btn-lg">
+          Next
+        </div>
+        <br>
+      </div>
+      <div ng-show="question.numProps != clickedProps.size">
+        <div ng-click="skip()" class="btn btn-primary btn-lg">
+          Skip This Question
+        </div>
+        <br>
+      </div>
+
+
       <h3>{{100 - time}} seconds left.</h3>
       <br>
-      <h5>Please find <strong>{{question.numProps}}</strong> properties on this alien.
+      <h5>Please find <h1><strong>{{question.numProps}}</strong></h1> properties on this alien.
       </h5>
       <br>
-      <h5><strong>Total found: {{clickedProps.size}}</strong></h5>
+      <h5><strong>Total found: {{clickedProps.size}}/{{question.numProps}}</strong></h5>
 
-      <div class="alien-img">
+      <div class="alien-img" ng-show="question.numProps != clickedProps.size">
         <img ng-src="{{question.alien.url}}" alt="" usemap="#Map" class="alienImgs" imageonload="timer()"/>
         <map name="Map" id="Map">
           <div bind-html-compile="question.mode">
